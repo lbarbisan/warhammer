@@ -9,4 +9,8 @@ package fr.lb.warhammer.business.workflow.personnagejoueurcreation;
  */
 public class PersonnageJoueurCaracteristiqueCreator {
 
+	public void setCaracteristique()
+	{
+	
+	}
 }

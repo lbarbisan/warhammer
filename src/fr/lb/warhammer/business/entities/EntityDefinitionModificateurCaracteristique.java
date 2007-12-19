@@ -1,5 +1,8 @@
 package fr.lb.warhammer.business.entities;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -31,6 +34,34 @@ public class EntityDefinitionModificateurCaracteristique extends fr.lb.warhammer
 	
 	private EnumDefinitionRace race;
 	private EnumDefinitionCaracteristique caracteristique;
+	
+	
+	/**
+	 * Constructeur helper
+	 * @param type string de la forme suivante 20+2D10
+	 * @param caracteristique EnumDefinitionCaracteristique
+	 * @param race EnumDefinitionCaracteristique
+	 * @throws NumberFormatException Si le parsing de type echoue
+	 * @throws IllegalArgumentException Si le parsing de type echoue
+	 */
+	public void setAll(String type, EnumDefinitionCaracteristique caracteristique, EnumDefinitionRace race) throws NumberFormatException, IllegalArgumentException 
+	{
+		setCaracteristique(caracteristique);
+		setRace(race);
+		
+		Pattern pattern = Pattern.compile("([1-9]{1}[0-9]*)\\+([1-9]{1}[0-9]*)d([1-9]{1}[0-9]*)");
+		Matcher m = pattern.matcher(type);
+		boolean b = m.matches();
+		
+		if(!b || m.groupCount() != 3)
+		{
+			 throw new IllegalArgumentException("type passed to setAll doesn't match with x+xdxx");
+		}
+		
+		setBase(Byte.parseByte(m.group(1)));
+		setDesNumber(Byte.parseByte(m.group(2)));
+		setDesType(Byte.parseByte(m.group(3)));
+	}
 	
 
 	/**

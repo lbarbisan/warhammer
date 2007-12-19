@@ -16,6 +16,15 @@ import fr.lb.warhammer.business.entities.interfaces.IEntity;
  */
 @Local
 public interface IEntityLocal {
+
+	/**
+	 * @param entityClass type de la classe métier
+	 * @param properties liste des propriétés sous la forme suivante :
+	 *  <nom>, <valeur>, <nom>, <valeur>
+	 * @return nouvel objet
+	 */
+	IEntity create(Class entityClass);
+
 	
 	/**
 	 * @param entityClass type de la classe métier

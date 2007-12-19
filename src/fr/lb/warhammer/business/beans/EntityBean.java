@@ -34,6 +34,30 @@ public class EntityBean implements IEntityLocal {
 	@PersistenceContext(unitName = "custdb")
 	private EntityManager em;
 
+	@Override
+	public IEntity create(Class entityClass) {
+		IEntity entity = null;
+		boolean rollBackNeeded = false;
+
+		try {
+			entity = (IEntity) entityClass.newInstance();
+		} catch (InstantiationException e1) {
+			logger.error(e1);
+			rollBackNeeded = true;
+		} catch (IllegalAccessException e1) {
+			logger.error(e1);
+			rollBackNeeded = true;
+		}
+
+		if (rollBackNeeded) {
+			context.setRollbackOnly();
+			return null;
+		} else {
+			em.persist(entity);
+			return entity;
+		}
+	}
+	
 	// Système de rollback qui ne s'arrête pas à la méthode
 	public IEntity create(Class entityClass, Object... properties) {
 

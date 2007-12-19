@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src"/>
+	<classpathentry excluding="fr/lb/warhammer/business/entities/EntityCaracteristique.java|fr/lb/warhammer/business/entities/EntityModificateurCaracteristique.java|fr/lb/warhammer/business/entities/EntityPersonnageJoueur.java|fr/lb/warhammer/business/workflow/personnagejoueurcreation/PersonnageJoueurCaracteristiqueCreator.java|fr/lb/warhammer/business/workflow/personnagejoueurcreation/PersonnageJoueurCreator.java" kind="src" path="src"/>
 	<classpathentry kind="src" path="tst"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
@@ -10,5 +10,6 @@
 	<classpathentry kind="lib" path="lib/jms-ra.jar"/>
 	<classpathentry kind="lib" path="lib/log4j-1.2.14.jar"/>
 	<classpathentry kind="lib" path="lib/thirdparty-all.jar"/>
+	<classpathentry kind="lib" path="conf"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

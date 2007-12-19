@@ -1,7 +1,5 @@
 package fr.lb.warhammer.business.entities;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -100,10 +98,18 @@ public class EntityPersonnageJoueur extends fr.lb.warhammer.business.entities.En
 		firePropertyChange("cc", oldValue, CC);
 	}
 
+	/**
+	 * EnumDefinitionCaracteristique.CT
+	 * @return
+	 */
 	public EntityCaracteristique getCT() {
 		return CT;
 	}
 
+	/**
+	 * EnumDefinitionCaracteristique.CT
+	 * @param ct
+	 */
 	public void setCT(EntityCaracteristique ct) {
 		Object oldValue = CT;
 		CT = ct;
