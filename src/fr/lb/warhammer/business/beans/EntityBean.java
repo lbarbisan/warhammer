@@ -7,15 +7,12 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.ejb.SessionContext;
-import javax.ejb.Stateful;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.LockModeType;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.apache.log4j.Logger;
-import org.hibernate.LockMode;
 
 import fr.lb.warhammer.business.beans.interfaces.IEntityLocal;
 import fr.lb.warhammer.business.entities.interfaces.IEntity;

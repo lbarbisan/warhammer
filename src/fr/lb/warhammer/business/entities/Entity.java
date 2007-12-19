@@ -15,6 +15,11 @@ import fr.lb.warhammer.business.entities.interfaces.IEntity;
  */
 public class Entity extends AbstractEntity implements IEntity {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3960485408464798825L;
+	
 	//	identité
 	protected int id;
 

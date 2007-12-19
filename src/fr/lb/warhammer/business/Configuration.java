@@ -12,8 +12,6 @@ import org.apache.log4j.Logger;
 import org.jboss.ejb3.embedded.EJB3StandaloneBootstrap;
 import org.jboss.ejb3.embedded.EJB3StandaloneDeployer;
 
-import fr.lb.warhammer.business.beans.EntityBean;
-
 /**
  * @author Administrateur
  *
@@ -50,10 +48,10 @@ public class Configuration {
 		}
 	}
 	private static InitialContext getInitialContext() throws Exception {
-		Hashtable props = getInitialContextProperties();
+		Hashtable<String, String> props = getInitialContextProperties();
 		return new InitialContext(props);
 	}
-	private static Hashtable getInitialContextProperties() {
+	private static Hashtable<String, String> getInitialContextProperties() {
 		Hashtable<String, String> props = new Hashtable<String, String>();
 		props.put("java.naming.factory.initial",
 				"org.jnp.interfaces.LocalOnlyContextFactory");
