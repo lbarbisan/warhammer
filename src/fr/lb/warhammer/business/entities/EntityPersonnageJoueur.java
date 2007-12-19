@@ -1,5 +1,7 @@
 package fr.lb.warhammer.business.entities;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -36,17 +38,6 @@ import fr.lb.warhammer.business.entities.interfaces.IEntity;
  * couleurs différentes (cf. Lecture des jets de dés, page 9).Vous pouvez
  * normalement vous procurer des dés à dix faces dans tout magasin
  * proposant le présent ouvrage.
- * 
- * Résumé de la création d’un personnage
- * La création d’un personnage de WJDR se déroule comme suit :
- * 1 Choisissez votre race (cf. pages 15-17).
- * 2 Déterminez vos caractéristiques (cf. pages 17-19).
- * 3 Notez vos traits raciaux (cf. page 19).
- * 4 Apportez vos détails personnels (cf. pages 21-26).
- * 5 Déterminez votre carrière de départ (cf. page 20).
- * 6 Notez les détails de votre carrière (cf. page 20).
- * 7 Sélectionnez votre promotion gratuite (cf. page 20).
- * 8 Commencez à jouer à WJDR !
  */
 @Entity
 public class EntityPersonnageJoueur extends fr.lb.warhammer.business.entities.Entity implements IEntity {
@@ -57,13 +48,65 @@ public class EntityPersonnageJoueur extends fr.lb.warhammer.business.entities.En
 	 */
 	@Transient private static final long serialVersionUID = -3335169952938504104L;
 	
-	
+	/**
+	 * Race du personnage
+	 */
+	private EnumDefinitionRace race;
+	/**
+	 * Liste des modificateurs de CC.
+	 */
+	private EntityCaracteristique CC;
+	/**
+	 * Liste des modificateurs de CT.
+	 */
+	private EntityCaracteristique CT;
 
+	
 	/**
 	 * @see fr.lb.l5r.business.entities.Entity#getId()
 	 */
 	@Id	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Integer getId() {
 		return id;
+	}
+
+	public EnumDefinitionRace getRace() {
+		return race;
+	}
+	/**
+	 * Definie la race pour le personnage
+	 */
+	@Enumerated(EnumType.STRING)
+	public void setRace(EnumDefinitionRace race) {
+		Object oldValue = this.race;
+		this.race = race;
+		firePropertyChange("race", oldValue, this.race);
+	}
+
+	/**
+	 * EnumDefinitionCaracteristique.CC
+	 * @return
+	 */
+	public EntityCaracteristique getCC() {
+		return CC;
+	}
+	/**
+	 * EnumDefinitionCaracteristique.CC
+	 * @param cc
+	 */
+	public void setCC(EntityCaracteristique cc) {
+		Object oldValue = CC;
+		CC = cc;
+		firePropertyChange("cc", oldValue, CC);
+	}
+
+	public EntityCaracteristique getCT() {
+		return CT;
+	}
+
+	public void setCT(EntityCaracteristique ct) {
+		Object oldValue = CT;
+		CT = ct;
+		firePropertyChange("ct", oldValue, CT);
 	}
 }
