@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-diagram name="PersonnageCreation" width="799" height="612">
+  <node name="start" x="27" y="16" width="140" height="40">
+    <transition name="">
+      <label x="5" y="-10"/>
+    </transition>
+  </node>
+  <node name="end1" x="32" y="534" width="140" height="40"/>
+  <node name="task1" x="28" y="137" width="140" height="40"/>
+</process-diagram>

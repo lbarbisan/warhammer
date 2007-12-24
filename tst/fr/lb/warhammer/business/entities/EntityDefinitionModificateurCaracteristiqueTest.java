@@ -32,7 +32,7 @@ public class EntityDefinitionModificateurCaracteristiqueTest {
 		try {			
 			EJB3StandaloneBootstrap.boot(null);
 			EJB3StandaloneDeployer deployer = EJB3StandaloneBootstrap.createDeployer();
-		    File file = new File("F:\\projects\\Projects\\L5R\\Warhammer");
+		    File file = new File("F:\\projects\\Projects\\L5R\\Warhammer\\");
 		    deployer.getDeployDirs().add(file.toURL());
 
 		    deployer.create();

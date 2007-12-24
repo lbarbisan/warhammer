@@ -1,0 +1,40 @@
+<project name="eMagine" basedir="." default="DeleteDB">
+
+	<property name="source" value="./src"/>
+	<property name="lib" value="./lib"/>
+	<!-- <property name="classes" value="./WebContent/WEB-INF/classes"/>
+	
+	<property name="ressourceDir" value="${source}/fr/umlv/ir3/emagine/ressource"/>
+	<property file="${ressourceDir}/eMagine.properties"/> 
+
+	<property name="junit" value="./TestSource"/>
+	<property name="outTest" value="${junit}/result"/> -->
+
+	<property environment="env"/>
+	<property name="db.connectionURLPrefix" value="jdbc:postgresql://"/>
+	<property name="db.driver" value="org.postgresql.Driver"/>
+	<property name="db.hostname" value="192.168.75.1"/>
+	<property name="db.port" value="5432"/>
+	<property name="db.username" value="warhammer"/>
+	<property name="db.password" value="warhammer"/>
+	<property name="db.username.admin" value="postgres"/>
+	<property name="db.password.admin" value="#Pourquoi#Pas#"/>
+	<property name="db.name" value="warhammer"/>
+	<property name="tomcat.lib" value="${env.CATALINA_HOME}/common/lib"/>
+	<property name="db.url" value="${db.connectionURLPrefix}${db.hostname}:${db.port}/${db.name}"/>
+	<property name="db.url.admin" value="${db.connectionURLPrefix}${db.hostname}:${db.port}/template1"/>
+
+	<!-- Supprime la base de données et la recréer -->
+	<target name="DeleteDB" description="Supprime et recréer la base de données">
+
+		<sql driver="${db.driver}" url="${db.url.admin}" userid="${db.username.admin}" password="${db.password.admin}" autocommit="true">
+			<classpath>
+				<fileset dir="${lib}">
+					<include name="**/*.jar"/>
+				</fileset>
+			</classpath>
+			DROP DATABASE "warhammer";
+			CREATE DATABASE "warhammer" WITH OWNER = "warhammer" ENCODING = 'UTF8' TABLESPACE = pg_default;
+		</sql>
+	</target>
+</project>
